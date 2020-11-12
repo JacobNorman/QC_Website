@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Quantum Cryptography</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.css" rel="stylesheet">
+
+  <!-- Import Mathjax-->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container-fluid">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Quantum Cryptography</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#intro">Introduction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#crypt">Cryptograhpy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#public">Public-Key Encryption</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#qCrypt">Quantum Cryptography</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container-fluid">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">Quantum Cryptography</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">An introduction</h2>
+        <a class="btn btn-primary js-scroll-trigger" href="#intro">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="intro" class="about-background text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 mx-auto">
+          <h2 class="text-white mb-4">Why Quantum Cryptography?</h2>
+          <p class="text-white-50">As the world becomes increasingly digital, the need for trust and security in our computer 
+            systems becomes ever more important. There is a hidden battle going on between encryption and decryption methods. 
+            To maintain trust in the systems that govern so much of the world's infrastructure it is vital that encryption 
+            techniques stay on top. </p>
+          <p class="text-white-50">Usable quantum computers may be around very soon and present a big problem for current encryption protocols. As 
+            we'll see, these methods rely on the difficulty of factorizing large numbers, a task which quantum computers could, 
+            in theory, do with ease.</p>
+          <p class="text-white-50">To understand how quantum cryptography works, we first need to know the basics of "classical" cryptography protocols 
+            and a couple of key results from Quantum Mechanics.</p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Crypography Section -->
+  <section id="crypt" class="projects-section bg-light">
+    <div class="container">
+      <h2 class="text-black mb-4">Cryptography</h2>
+      <p>The aim of cryptography is to communicate privately without a message being intercepted or changed by a third party. Let's introduce a few 
+        characters to make the discussion easier. Alice has a secret message that she needs to send privately to Bob without an eavesdropper 
+        - Eve - intercepting and reading the message. Eve may be a very good eavesdropper and codebreaker, so we can assume 
+        that she may be able to intercept anything sent in the channel between Alice and Bob and use her code breaking skills to 
+        decrypt the message if this is at all possible. To do this, Alice must alter the message (called the plaintext) in such a way 
+        that Eve can't understand the message and only Bob is able to transform the encrypted message (called the ciphertext) back into the plaintext. 
+        Encryption is all about finding ways of encrypting the plaintext so that it is very difficult or impossible for Eve to guess or work 
+        out how to decrypt the ciphertext.</p>
+      <img src="img/alice-and-bob.png" class="AnB-size" alt="">
+      <br><br><br><br>
+      <h4 class="text-black mb-4">Caesar Cypher</h4>  
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+        <div class="col-xl-8 col-lg-7">
+          <img class="img-fluid mb-3 mb-lg-0" src="img/CaesarCypher1.png" alt="">
+        </div>
+        <div class="col-xl-4 col-lg-5">
+          <div class="featured-text text-center text-lg-left">
+            <p class="text-black mb-0">A simple method to encode text - called a Caesar Cypher - is to replace each letter by the next letter in the alphabet. 
+              So, A becomes B, B becomes C and so on. It's very useful to get a computer to do this for us, so its easiest to translate 
+              to a numerical representation which we'll call x. Then all we need to do to x to get the encrypted alphabet is add 1.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+        <div class="col-xl-8 col-lg-7">
+          <img class="img-fluid mb-3 mb-lg-0" src="img/CaesarCypher2.png" alt="">
+        </div>
+        <div class="col-xl-4 col-lg-5">
+          <div class="featured-text text-center text-lg-left">
+            <p class="text-black mb-0">We run into a problem when get to the end of the alphabet because we want Z to be changed 
+              to A. This is easily handled using the modulo operation, which returns the remainder of a division.</p>
+          </div>
+        </div>
+          <p>
+            <br><br>Unfortunately, this encryption is not very secure and has a few big weaknesses: 
+            <ul>
+              <li> The most straightforward way to attack is simply to use trial and error. This works because there are only 25 possible values for 
+                the shift, which would be extremely fast for a computer to check through.</li>
+              <li>Another weakness comes from the regularity of the method; all letters are shifted by the same amount so some of the information in 
+                the plaintext is preserved. For example, in the English language, letter "e" is significantly more common than any other letter, so it is 
+                quite likely that the most common letter in the ciphertext represents "e" in the plaintext. If this is true, then the secret is out - the 
+                codebreaker knows the value of the shift.</li>
+              </ul>
+
+        <h4 class="text-black mb-4">One-time Pad</h4>
+        <p>The Caesar cypher is easy to decrypt because it's very regular- all letters are shifted by the same amount. So, what happens if 
+          we shift each letter by a different, random number and how could this be done? Alice and Bob would both need to have a list of numbers (called a key 
+          or one-time pad) corresponding to the shift that is applied to each letter. Then Alice would use this key to encrypt the 
+          message and Bob would use the key to decrypt the message by applying the reverse shift. Below is an example of how the word "MESSAGE"
+          could be encrypted using the key (one-time pad) 20100609070615.</p> 
+          <img src="img/otp-example.PNG" class="OTP-size" alt="">
+        <br><br><br>
+        <p>In 1945, an American mathematician 
+          named Claude Shannon proved that this is completely secure, provided the key is:
+          <ul>
+            <li>random,</li>
+            <li>at least as long as the message to be encrypted,</li>
+            <li>only used once,</li>
+            <li>completely secret- no one else can know the key.</li>
+            </ul>
+
+        <p>
+          It might appear that we have found a way of sending messages completely securely. Unfortunately, we're now left with a 
+          problem that is just as hard as sending the original message. For these conditions to be met, we need to send a 
+          unique, random key between Alice and Bob that cannot be intercepted by Eve. To make things more difficult, this message
+          must be at least as long as the message and cannot be reused. The most practical way this could be done is to deliver the 
+          key in person to Alice and Bob, which quickly becomes far too expensive and time consuming.</p>
+        <p>
+          There are a few ways to move forward from here. The first is to scrap the idea of completely secure communication and settle
+          for something that is very hard to break. Distributing keys becomes easier if the key can be reused - either repeated 
+          throughout the same message or used for multiple encryptions. This is no longer secure because Shannon's conditions are no 
+          longer met. Intuitively, this is because by reusing the key, we introduce regularity into the encryption which makes it possible 
+          to crack.</p>
+        <p>
+          Then we have two more sophisticated solutions: a mathematical solution called <i>public-key encryption</i> and solution using physics 
+          called <i>quantum cryptography</i>.
+          <ul>
+            <li><b>Public-key encryption</b> uses mathematics to create a system with two keys: one that encrypts the message and another that decrypts 
+              the message. This means that the decrypting key does not need to be sent to Alice so Eve cannot intercept.
+            </li>
+            <li><b>Quantum cryptography</b> uses some of the weird properties of Quantum Mechanics so that Alice and Bob can send a key to each other and know for 
+              sure if Eve has intercepted it or not. Then a standard protocol such as one-time pad encryption is used to send the message.</li>
+          </ul>
+
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Public-Key Encryption Section -->
+  <section id="public" class="projects-section bg-light">
+    <div class="container">
+      <h2 class="text-black mb-4">Public-Key Encryption</h2>
+      <p>We've seen that one-time pad encryption works when both Alice and Bob share one secret key or one-time pad that can be used both to encrypt 
+        a message and to decrypt a message. Because the same key is used for encryption and decryption, one-time pad encryption is called symmetric. 
+        The key works in both directions because the encryption procedure (adding the one-time pad) and the decryption procedure (subtracting the 
+        one-time pad) are both very easy to do.</p>
+      <p>Public key encryption works slightly differently. Bob makes two keys using a specific process (we'll get to this later)- a public key and a private key. He sends 
+        the public key to Alice and anyone else who might want to send him information but keeps the private key for himself only. The public key
+        is used to encrypt the message but, unlike one-time pad encryption, the public key can't be used to decrypt the message. Only the secret 
+        key can be used to decrypt the message. The following analogy is useful.</p>
+      
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+        <div class="col-xl-8 col-lg-7">
+          <img class="img-fluid mb-3 mb-lg-0" src="img/One-time-pad.png" alt="">
+        </div>
+        <div class="col-xl-4 col-lg-5">
+          <div class="featured-text text-center text-lg-left">
+            <p class="text-black mb-0">In one-time pad encryption, identical keys are distributed between Alice and Bob which lock and 
+              unlock a safe containing the message. The locked safe is sent between Alice and Bob, so Eve cannot access the message even if she intercepts 
+              the safe.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+        <div class="col-xl-8 col-lg-7">
+          <img class="img-fluid mb-3 mb-lg-0" src="img/public-key.png" alt="">
+        </div>
+        <div class="col-xl-4 col-lg-5">
+          <div class="featured-text text-center text-lg-left">
+            <p class="text-black mb-0">In public-key encryption, Bob hands out open padlocks to Alice without worrying if Eve recieves one too. Only he has the key that 
+              unlocks the padlocks. Alice locks her message with her padlock and sends it back to Bob. No one other than Bob - not even Alice - can decrypt 
+              the message because only Bob has the key.</p>
+          </div>
+        </div>
+      </div>
+      <p>The natural question now is how would Bob make a key that was able to encrypt the plaintext but not decrypt the ciphertext? As discussed earlier, 
+        encryption is just a mathematical operation (or function) that is applied to the numbers that represent the plaintext. Decryption is simply the inverse mathematical 
+        operation. In the case of one-time pad encryption, encryption was done using addition and decryption by subtraction. For public-key encryption, we need to use 
+        a mathematical operation that is straightforward in one direction and very difficult in the other direction. 
+         </p>
+      <p>It turns out there is a very simple solution to this - prime multiplication and factorisation. Computers are very efficient at multiplying numbers together, but 
+        very slow at decomposing numbers into their prime factors. For example, if you were asked to calculate
+        \[37 \times 41 = 1517,\]
+        you could probably do this fairly quickly (or get a calculator to do it for you). But if you were asked to find the prime factors of 1247, you would have to use 
+        trial and error to guess
+        \[1247/2 = 623.5,\]
+        \[1247/3 = 415.66,\]
+        checking through all the prime numbers until you checked 29 or 43 and found
+        \[1247 = 29 \times 43.\]
+      This is the mathematics that RSA encryption (the most common type of Public-Key encryption) relies on. The protocol is constructed so that decrypting the message 
+      requires you to know (or find) the prime factors of the public key. This means that RSA encryption can be cracked since it is possible to find the prime factors 
+      of any public key. However, in practice, the public-keys are huge (around 4096-bits or 1234 digits long), so even the most advanced supercomputers can't factor 
+      the public-key in a workable amount of time. 
+      </p>
+    </div>
+
+  </section> 
+
+  <!-- Quantum Cryptography Section -->
+  <section id="qCrypt" class="contact-section bg-light">
+    <div class="container">
+      
+      <h2 class="text-black mb-4">Quantum Cryptography</h2>
+      <h4 class="text-black mb-4">Quantum Mechanics</h4>
+      <p>
+        To understand how quantum cryptography works, there are a a few key concepts from quantum mechanics (QM) that must be understood.
+        <ul>
+          <li>
+            In QM, a particle (or system) does not have a defined state (i.e. its position, momentum etc.) until it is measured. Instead, it has a <i>wavefunction</i>
+            that describes the probability of the particle being in different states. When a particle is measured, we say the wavefunction "collapses" into one of the 
+            possible states. <b> Note: </b> this is not the same as an observer being uncertain of the state of the particle; it really is undefined until its measured 
+            and you can do experiments to show this! </li>
+          <li>
+            Many quantities (such as energy, position etc.) are not continuous like they are in classical mechanics. This means that they can't take any value within 
+            an allowed range - only a few very special values. </li>
+          <li>
+            The allowed states for a particle can depend on how you measure the particle. Later, we'll be using polarized photons, where the allowed polarization  
+            angles are dependent on the basis you measure in. For example, if you measure the photon in a standard x-y coordinate system, the photon can be vertically 
+            polarized or horizontally polarized, but not diagonally polarized.</li>
+          <li>
+            In QM, the state of a particle or system is often represented using Dirac notation by |x&#10217;. So, to denote a vertically polarized photon we might use
+            |&#8593;&#10217;.
+          </li>
+        </ul>
+        Back to quantum cryptography. In the previous section, we looked at a classical cryptography method called a one-time pad that was able send a message 
+        completely securely provided both Alice and Bob possess the same one-time pad and no one else knows this number. However, distributing this one-time pad secretly 
+        is very difficult. So, quantum cryptography only needs to solve the key-distribution problem- the rest can be done using the one-time pad method.
+      <br><br>
+      <h4 class="text-black mb-4">BB84 Protocol</h4>
+      <p>
+        The main advantage quantum mechanical systems have for sending a key securely is that measurement fundamentally affects the particle. This means that if Eve 
+        attempts to listen in and hear the key, she will alter the information in a way that Alice and Bob can detect. The first physicists to publish a method for doing 
+        this were Charles Bennett and Gilles Brassard, who came up with the BB84 protocol.
+      </p>
+      <p>
+        <b>Initial set-up:</b>
+        <ul>
+          <li>
+            Alice and Bob communicate over two channels: a classical channel (e.g. phone line, internet) and a quantum channel. We can assume Eve is able to listen in 
+            to everything sent over the classical channel and she can choose to listen to information in the quantum channel (although Alice and Bob should be able to 
+            detect this).</li>
+          <li>
+            Alice and Bob measure in two bases (or coordinate systems). One is the standard x-y axis and the other is a 45 degree rotated x-y axis.</li>
+          <li>
+            Polarized photons are sent over the quantum channel. Depending on the basis being used, these can take four forms: vertically polarized (|&#8593;&#10217;), horizontally  
+            polarized (|&#8594;&#10217;), 45 degree polarized (|&#8599;&#10217;) and 135 degree polarized (|&#8598;&#10217;). Alice and Bob agree on the following system (shown below) to convert the 
+            polarized photons into 1s and 0s (binary bits). So, if Alice wants to send a 0, she will send a horizontally  polarized (|&#8594;&#10217;) photon if she's using the 
+            standard basis and an 45 degree polarized (|&#8599;&#10217;) photon if she's using the diagonal basis.</li> 
+        </ul>
+        <img class="img-center" src="img/basis.PNG" alt="">
+
+      <p>
+        <b>Protocol:</b> Click through the explanation below to learn how BB84 works.
+        
+
+      <div id="carouselExampleControls" class="carousel slide" data-interval="false">
+        <div class="carousel-inner">
+          <div class="carousel-item active ">
+            <img class="d-block w-100" src="img/bb84/Slide1.PNG" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="img/bb84/Slide2.PNG" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="img/bb84/Slide3.PNG." alt="Third slide">
+          </div>
+          <div class="carousel-item ">
+            <img class="d-block w-100" src="img/bb84/Slide4.PNG" alt="Fourth slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="img/bb84/Slide5.PNG" alt="Fith slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="img/bb84/Slide6.PNG." alt="Sixth slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="img/bb84/Slide7.PNG" alt="Seventh slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="img/bb84/Slide8.PNG." alt="Eighth slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="img/bb84/Slide9.PNG" alt="Ninth slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next text-black" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+        <br><br>
+        Scientists have since used this protocol to send secure information and quantum cryptography is likely to be the future of cryptography. However, there are many 
+        questions left to solve and more research to be done before this can be widely used. In particular, the practical implementation of these protocols is very difficult 
+        due to the instability of quantum systems. This makes long distance quantum cryptography especially problematic. 
+        <br><br>
+        And finally, there are lots of good resources online which were very useful when making this website and would be good places to start if you want to find out 
+        more about the subject:
+        <br>
+        <br>
+        <ul>
+          <li>For more about public-key encryption: <br><a href="https://brilliant.org/wiki/rsa-encryption/">https://brilliant.org/wiki/rsa-encryption/</a></li>
+          <li>More on various quantum-key distribution protocols: <br> <a href="www.cse.wustl.edu/~jain/cse571-07/ftp/quantum/#bb84">www.cse.wustl.edu/~jain/cse571-07/ftp/quantum/#bb84</a></li>
+          <li>Wall street international article on quantum computing: <br> <a href="wsimag.com/science-and-technology/44736-a-brief-glance-at-quantum-cryptography">wsimag.com/science-and-technology/44736-a-brief-glance-at-quantum-cryptography</a></li>
+          <li>Introduction to Quantum Cryptography by Xiaoqing Tan: <br> <a href="http://dx.doi.org/10.5772/56092">http://dx.doi.org/10.5772/56092</a></li>
+        </ul>
+        <br>
+      </div>    
+</section> 
+      
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <img class="img-fluid mb-3 mb-lg-0" src="img/uob-logo.png" alt="">
+        </div>
+        <div class="col-sm">
+          <h4 class="text-white mb-4">Jacob Norman</h4>
+          <p class="footer-text">University of Birmingham</p>
+          <p class="footer-text">School of Physics and Astronomy</p>
+          <p class="footer-text">JXN749@student.bham.ac.uk</p>
+        </div>
+        
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.min.js"></script>
+
+</body>
+
+</html>
